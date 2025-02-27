@@ -10,6 +10,7 @@
 \usepackage{wrapfig}
 \usepackage{amssymb}
 \usepackage{subfigure}
+\usepackage{bookmark}
 \setlength\parindent{0pt}
 % chktex-file 8 % this line tells ChkTeX to ignore warning number 8 throughout the file, which prevents the "Wrong length of dash may have been used" warning from appearing.
 
@@ -21,6 +22,11 @@
 \maketitle
 
 \tableofcontents
+\newpage
+
+\setcounter{section}{-1}
+\section{Course Info}
+\input{sections/0_course_info.tex}
 \newpage
 
 \section{Introduction}
