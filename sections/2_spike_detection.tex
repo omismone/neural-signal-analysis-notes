@@ -19,7 +19,7 @@ situations, according to the distance of the electrode tip from the neurons:
           single neuron (single unit).
     \item \(50\sim150\,\mu{m}\): spikes are still detected, but the difference in their
           shape is masked by the noise (multi-unit activity or MUA).
-    \item \(>150\,\mu{m}\): spikes cannot be detected and they contribute to the noise.
+    \item \(>150\,\mu{m}\): spikes cannot be detected, they contribute to the noise.
 \end{itemize}
 \begin{figure}[H]
     \includegraphics[scale=0.3]{2_3}
@@ -42,7 +42,7 @@ The workflow commonly followed to preprocess this kind of data is:
     \item \textbf{Data recording:} raw data in the form of a matrix
     \item \textbf{Data conversion:} convert data to a form which is compatible with our system
     \item \textbf{Data filtering:} maintains the dimensionality but filters the data
-    \item \textbf{Spike detection:} keeps always the same format (matrix)
+    \item \textbf{Spike detection:} always keeps the same format (matrix)
     \item \textbf{Take a decision:} is it desirable to identify the individual sources of the signal?
           \begin{itemize}
               \item \textbf{No:} a multi-unit spike train is obtained
@@ -58,7 +58,7 @@ by starting from the spike train:
 \end{figure}
 As already said, a spike train is a vector containing the positions of spikes with no information
 regarding the amplitude (often normalized at \(1\)).
-Let's recall the mathematically definition of a spike train:
+Let's recall the mathematical definition of a spike train:
 \begin{itemize}
     \item Single-channel spike train:
           \begin{equation*}
