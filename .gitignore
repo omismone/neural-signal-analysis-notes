@@ -8,3 +8,5 @@
 *.synctex(busy)
 *.toc
 *.vscode
+labs/.venv/
+labs/.vscode/
