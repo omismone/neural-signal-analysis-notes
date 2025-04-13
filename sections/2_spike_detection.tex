@@ -8,7 +8,7 @@ Neural signals are firstly recorded as raw data. They exhibit two main component
           \end{figure}
     \item Spikes (MUA) exist at higher frequencies (\(300-3000\,Hz\)).
           \begin{figure}[H]
-              \includegraphics[scale=0.4]{2_2}
+              \includegraphics[scale=0.6]{2_2}
               \centering
           \end{figure}
 \end{itemize}
@@ -35,7 +35,7 @@ characterized by two different patterns of activity:
 \end{itemize}
 The workflow commonly followed to preprocess this kind of data is:
 \begin{figure}[H]
-    \includegraphics[scale=0.4]{2_4}
+    \includegraphics[scale=0.5]{2_4}
     \centering
 \end{figure}
 \begin{itemize}
@@ -70,7 +70,7 @@ Let's recall the mathematical definition of a spike train:
           \end{equation*}
 \end{itemize}
 \begin{figure}[H]
-    \includegraphics[scale=0.35]{2_6}
+    \includegraphics[scale=0.4]{2_6}
     \centering
 \end{figure}
 \textbf{Spike Detection:} it consists in recognizing the spikes within the raw data. It is the most
@@ -101,7 +101,7 @@ commercial systems for data acquisition where the online detection of the spikes
 detection technique is often useful because it is quite fast, even if at the expenses of precision.
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.22]{2_7.png}
+    \includegraphics[scale=0.4]{2_7.png}
 \end{figure}
 \paragraph{Hard Threshold} Notice this algorithm is applied also to absolute-valued
 signals. It involves 2 distinct main steps: application of a threshold and spike identification.\\
@@ -116,12 +116,14 @@ The threshold (\(Thr\)) can be defined in several ways:
           Median Absolute Deviation (\(MAD\)), with \(MAD=median(|x-median(x)|)\) and \(\sigma_N=1.4826\cdot MAD\).
           A good value for \(n\) is \(4\).
 \end{itemize}
+MAD = Median Absolute Deviation is a robust statistical measure. It is computed as \(MAD=median(|x-median(x)|)\), it works well in situations where the data contains large deviations.\\ 
+A common way to approximate the standard deviation using MAD is: $\sigma \approx 1.4826 \cdot MAD$. Since MAD is based on medians rather than means, it is resistant to outliers, unlike the standard deviation, which can be heavily influenced by extreme values.
 \paragraph{Hard Threshold Local Maxima}
 This method is very similar to the previous ones, but in this case the spike position is
 associated to the local maxima (and not set at the time of the first sample overcoming the threshold).
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.2]{2_8.png}
+    \includegraphics[scale=0.4]{2_8.png}
 \end{figure}
 \paragraph{Hard Threshold Differential Threshold}
 A sliding window \(W\) is sized to contain at least one spike and is shifted over the signal.
@@ -135,7 +137,7 @@ This approach exhibits a major issue, which is related to undersampling if more 
 in a single window (typically at the window borders).
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.18]{2_9.png}
+    \includegraphics[scale=0.4]{2_9.png}
 \end{figure}
 \paragraph{Precision Timing Spike Detection (PTSD)}
 This method solves the undersampling issue. \\ The operation of PTSD differs from the previous
@@ -144,14 +146,14 @@ instead of a unipolar one; moreover, in addition to \(RP\), there is also anothe
 called \textbf{Peak Lifetime Period} \(PLP\) - i.e., the maximum duration that a spike can have -.
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.3]{2_10.png}
+    \includegraphics[scale=0.4]{2_10.png}
 \end{figure}
 Proceeding in order, the algorithm searches for a relative maximum/minimum (\(1^\circ\) \(RMM\),
 Relative Maximum/Minimum): if it finds a maximum then it will search the signal for
 the nearest minimum (\(2^\circ\) \(RMM\)) within the \(PLP\) window, while if it finds a minimum it will proceed
 in the same way but looking for a maximum. If the difference between the first \(RMM\) and the second \(RMM\)
 - i.e., the peak-to-peak amplitude of the spike -, exceeds the Differential Threshold (\(DT\)),
-then the spike is identified (\textit{Fig. a}). In case the second \(RMM\) falls at the end of the \(PLP\) window,
+then the spike is identified (\textit{Fig.\ a}). In case the second \(RMM\) falls at the end of the \(PLP\) window,
 another time window called \textbf{overshoot} is used to find the correct peak value (\textit{Fig. b}). The \(DT\) is
 always calculated as the standard deviation of the noise multiplied by a coefficient.\\
 Of course, this algorithm can't be used in real time, because it needs future times, but it allows to detect also the
@@ -165,13 +167,14 @@ which is used to scan the signal. For each time point, centered on the window wi
 the energy is given by the sum of the squares of the voltage amplitudes within the
 window, averaged by the window width:
 \begin{equation*}
-    SE(i)=\frac{1}{W}\sum_{j=i-\frac{W}{2}}^{j+\frac{W}{2}}V(j)^2
+    SE(i)=\frac{1}{W}\sum_{j=i-\frac{W}{2}}^{i+\frac{W}{2}}V(j)^2
 \end{equation*}
 where \(V\) are the voltage amplitudes within the window and \(W\) is the window width.\\
 The result is then multiplied by \(+1\) when the average amplitude of the raw signal is positive,
 by \(-1\) when negative.\\
 Since this algorithm has been implemented in the Offline Sorter commercial software,
-we refer to it also as Offline Sorter Signed Energy (OSSE).
+we refer to it also as Offline Sorter Signed Energy (OSSE). \\
+This transformation produces a new signal that enhances the local energy fluctuations while preserving the sign of the original signal. By doing so, SE(i) highlights potential spike events, making them more distinguishable from background noise. Traditional spike detection methods, such as thresholding and peak detection, can then be applied to this processed signal, improving robustness and reducing false detections.
 \paragraph{Nonlinear Energy Operator (NEO)}
 The NEO algorithm is defined such that:
 \begin{itemize}
@@ -207,10 +210,10 @@ There are 3 main types of groundtruths:
 \begin{itemize}
     \item \textbf{Experimental groundtruth}: neurons are recorded into two distinct ways,
           extracellular and intracellular (or juxtacellular). Then a researcher uses the
-          precise intracellular recordings (exhibting precise timing and localization) to find
+          precise intracellular recordings (exhibiting precise timing and localization) to find
           the same spikes into the extracellular signal.
     \item \textbf{Computational groundtruth}: data are synthetic and generated by a model
-          reproducing the behaviour of a network of neurons under different conditions.\\
+          reproducing the behavior of a network of neurons under different conditions.\\
           In particular, this method enables the researcher to test the Spike Detection
           algorithms against datasets with different characteristics, such as different
           signal-to-noise ratios (SNR). This comparison using SNR can help to understand if
@@ -244,7 +247,7 @@ a Spike Detection algorithm, in particular the most used ones are:
 \paragraph{Example} Hard Threshold algorithm errors\\
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.3]{2_11}
+    \includegraphics[scale=0.4]{2_11}
 \end{figure}
 \begin{enumerate}
     \item \textbf{True positive:} the algorithm detects all the samples above the threshold
@@ -285,11 +288,11 @@ In order to reduce the ROC performance to a single scalar indicator comprised be
 it is possible to calculate the Area Under the ROC Curve (AUC).\\
 Notice that the ROC curve provides information regarding False Positives, but nothing
 is said about False Negatives.
-\paragraph{Confusion Matrix} This matrix is special type of contingecy matrix and
-it allows to visualize the performance of an algorithm. Each row of the matrix
+\paragraph{Confusion Matrix} This matrix is special type of contingency matrix, and
+it allows visualizing the performance of an algorithm. Each row of the matrix
 represents the instances in an actual class while each column represents the instances
 in a predicted class (or vice versa). The confusion matrix term comes from the fact that
-such a visualization allows to assess whether the system is confusing two classes.
+such a visualization allows assessing whether the system is confusing two classes.
 \begin{figure}[H]
     \includegraphics[scale=0.20]{2_13}
     \centering
