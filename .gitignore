@@ -1,3 +1,4 @@
+labs/**/data/
 *.pdf
 *.aux
 *.fdb_latexmk
