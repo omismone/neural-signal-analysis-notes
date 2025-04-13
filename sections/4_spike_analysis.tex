@@ -40,21 +40,16 @@ This plot allows to observe activation patterns across channels, produced by the
 neurons influence each other. In the following plot, for instance, there are some events
 that cannot be spotted by looking only at one channel at a time; however, they can be noticed
 if a comparison is made between several channels. The pattern in the red rectangle is called
-Network Burst, as it involves all the channels.
+Network Burst, as it involves all the channels. On the Y axis are represented the labels of the electrodes.
+
 \begin{figure}[H]
-    \includegraphics[scale=0.4]{4_3}
+    \includegraphics[scale=0.6]{4_3}
     \centering
 \end{figure}
+
 \subsubsection{Task-Related Raster Plot}
-Be careful not to confuse plots: the Task-Related (or Stimulus-Related) Raster Plot is
-similar to the ordinary Raster Plot, nonetheless it has a quite different meaning: the
-multiple lines do not represent channels, but portions of the recording coming from just
-one channel. The signal portions are divided according to the execution of a task or the
-receiving of a stimulus.
-\begin{figure}[H]
-    \includegraphics[scale=0.25]{4_4}
-    \centering
-\end{figure}
+A task-related raster plot visualizes neural activity from a single electrode, aligned to a specific event (e.g., stimulus onset). The time axis represents time relative to the stimulus, centering all trials around it. Each row corresponds to a single trial, showing how the neuron responds across repeated presentations of the same stimulus.
+
 \subsubsection{High-Density Data Raster Plot}
 This is once again a type of Raster Plot. Data comes from several channels and they cover a
 relatively large span of time. As a consequence, it is almost impossible to distinguish
@@ -70,7 +65,7 @@ different areas of the brain are characterized by different activities, for exam
 thalamus has a more intense activity than the visual cortex. Hence, it can be understood
 which areas of the brain are firing by just looking at their fingerprints.
 
-\subsection{Spike Analysis: Spike Count and Firing Rate metrics}
+\subsection{Spike Count and Firing Rate metrics}
 \subsubsection{Spike Count}
 This metric is obtained by dividing the time axis into equal bins \(\Delta{t}=[t_a,t_b]\)
 and counting the number of spikes \(N_{ab}\) occurring in each bin. Then, an histogram
@@ -82,7 +77,7 @@ By dividing the Spike Count for the dimension of the bin, the actual firing rate
 \end{align*}
 The IFR is measured in spikes per second.
 \begin{figure}[H]
-    \includegraphics[scale=0.4]{4_6}
+    \includegraphics[scale=0.6]{4_6}
     \centering
 \end{figure}
 \subsubsection{Spike Density Function}
@@ -95,7 +90,7 @@ within a certain interval \(\Delta t\):
     r(t)=\frac{N_{ab}}{\Delta t}
 \end{equation*}
 \begin{figure}[H]
-    \includegraphics[scale=0.4]{4_7}
+    \includegraphics[scale=0.6]{4_7}
     \centering
 \end{figure}
 This analysis is often employed to appreciate the inhibition or excitation processes of
@@ -110,7 +105,7 @@ If \(M\) is the number of electrodes in the network, the AFR can be written as:
     AWFR=awfr(t)=mean(IFR)=\frac{1}{M}\sum_{j=1}^{M}r_{j}(t)
 \end{align*}
 \begin{figure}[H]
-    \includegraphics[scale=0.45]{4_8}
+    \includegraphics[scale=0.6]{4_8}
     \centering
 \end{figure}
 \subsubsection{Mean Firing Rate}
@@ -134,11 +129,11 @@ in order to find when the drug is able to arrive at \(50\%\) of its possible eff
     \frac{MFR(c_i)}{MFR(c_0)}\cdot100
 \end{equation*}
 \begin{figure}[H]
-    \includegraphics[scale=0.25]{4_9}
+    \includegraphics[scale=0.4]{4_9}
     \centering
 \end{figure}
-
-\subsection{Spyke Analysis: Inter Spike Interval}
+EC is the effective concentration.
+\subsection{Inter Spike Interval}
 \subsubsection{Inter Spike Interval}
 The Inter Spike Interval (ISI) is the interval between two consecutive spikes. It is used to
 compute the Inter Spike Interval Histogram (ISIH), an index of the probability that a spike
