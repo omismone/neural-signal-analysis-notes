@@ -2,7 +2,7 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{hyperref}
-\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage{exercise}
 \usepackage{cancel}
 \usepackage[margin=2.5cm]{geometry}
@@ -11,11 +11,11 @@
 \usepackage{amssymb}
 \usepackage{subfigure}
 \usepackage{bookmark}
+\usepackage{xcolor}
 \setlength\parindent{0pt}
-% chktex-file 8 % this line tells ChkTeX to ignore warning number 8 throughout the file, which prevents the "Wrong length of dash may have been used" warning from appearing.
 
 \title{Neural Signal Analysis - Notes}
-\author{Gaia Burlando, Letizia Cerutti, Simone Migliazza, Francesco Negri}
+% \author{Gaia Burlando, Letizia Cerutti, Simone Migliazza, Francesco Negri}
 \date{A.Y. 2024-2025}
 
 \begin{document}
@@ -39,11 +39,6 @@
 \input{sections/2_spike_detection.tex}
 \newpage
 
-\section{Spike Sorting}
-\graphicspath{ {./images/3/} }
-\input{sections/3_spike_sorting.tex}
-\newpage
-
 \section{Spike Analysis}
 \graphicspath{ {./images/4/} }
 \input{sections/4_spike_analysis.tex}
@@ -57,6 +52,11 @@
 \section{Burst Analysis}
 \graphicspath{ {./images/6/} }
 \input{sections/6_burst_analysis.tex}
+\newpage
+
+\section{Spike Sorting}
+\graphicspath{ {./images/3/} }
+\input{sections/3_spike_sorting.tex}
 \newpage
 
 \section{Network Bursts}
