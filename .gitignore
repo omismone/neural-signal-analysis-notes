@@ -11,3 +11,4 @@ labs/**/data/
 *.vscode
 labs/.venv/
 labs/.vscode/
+labs/.idea
