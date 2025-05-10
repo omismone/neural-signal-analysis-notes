@@ -92,11 +92,11 @@ They can be classified into 3 groups:
     \item \textbf{Template matching}: it is an approach based on the spike shape, involving Spike Sorting.
 \end{itemize}
 \subsubsection{Thresholding algorithms}
-\paragraph{Simple Hard Threshold}
+\paragraph{Simple Threshold}
 A \textbf{threshold} value is defined (either positive or negative). If the signal overcomes the threshold,
 then a spike is detected. A \textbf{refractory period} (\(RP\)) between two peaks is employed to account for
 subsequent samples overcoming the threshold after a spike detection.\\
-Simple hard thresholding is characterized by a very simple logic and for this reason it is often employed in
+Simple thresholding is characterized by a very simple logic and for this reason it is often employed in
 commercial systems for data acquisition where the online detection of the spikes is required. This kind of
 detection technique is often useful because it is quite fast, even if at the expenses of precision.
 \begin{figure}[H]
@@ -118,14 +118,13 @@ The threshold (\(Thr\)) can be defined in several ways:
 \end{itemize}
 MAD = Median Absolute Deviation is a robust statistical measure. It is computed as \(MAD=median(|x-median(x)|)\), it works well in situations where the data contains large deviations.\\ 
 A common way to approximate the standard deviation using MAD is: $\sigma \approx 1.4826 \cdot MAD$. Since MAD is based on medians rather than means, it is resistant to outliers, unlike the standard deviation, which can be heavily influenced by extreme values.
-\paragraph{Hard Threshold Local Maxima}
-This method is very similar to the previous ones, but in this case the spike position is
-associated to the local maxima (and not set at the time of the first sample overcoming the threshold).
+\paragraph{Hard Threshold - Local Maxima version}
+In this case the spike position is associated to the local maxima (and not set at the time of the first sample overcoming the threshold).
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.4]{2_8.png}
 \end{figure}
-\paragraph{Hard Threshold Differential Threshold}
+\paragraph{Differential Threshold}
 A sliding window \(W\) is sized to contain at least one spike and is shifted over the signal.
 The peak-to-peak threshold \(k\sigma\) is a multiple of the noise standard deviation (usually \(k=7\) or \(8\)).
 A spike is detected in the \(i-\)th window when
