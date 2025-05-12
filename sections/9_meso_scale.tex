@@ -15,9 +15,11 @@ Let's see some characteristics of the \textbf{cerebral cortex}:
 It is important to point out that the brain is highly redundant:
 just few regions are highly specialized, making easier to recover from injuries
 thanks to brain plasticity.\\
+
 The brain can be studied at several distinct scales, according to the recording site
 and the number of recorded neurons producing a certain electrical signal. In general,
-it can be stated that different neurons will respond to stimuli in different ways.\\
+it can be stated that different neurons will respond to stimuli in different ways.\\ 
+
 As said above, the cortex is structured in multiple layers, each of them with its own
 properties, such as the density of neurons. Generally, deeper layers neurons
 tend to project axons towards the surface, while upper layers cells project axons
@@ -28,23 +30,26 @@ distance from the source.
 
 \subsection{Local Field Potential}
 The \textbf{Local Field Potential (LFP)} refers to the electric potential measured in the
-extracellular space around neurons. Its acquisition requires invasive electrodes
+\textbf{extracellular} space around neurons. Its acquisition requires invasive electrodes
 implanted into the brain of the subject, thus it has nothing to do with EEG. If compared to
 spike recording, here the electrode is not inside or extremely close to a single neuron,
 therefore the signal travels through the extracellular space according to Maxwell's
-equations. The \textit{local} term is misleading, as it is meant to indicate that
+equations.\\ 
+
+The \textit{local} term is misleading, as it is meant to indicate that
 the LFP is derived from a small number of sources: the action potential fired by a
 neuron is highly attenuated by the extracellular space, thus the electrode can record
 potentials in a limited radius. Nonetheless, the LFP signal still displays a fair
 SNR. Spiking activity and Local Field Potential are closely
 related to one another, as they influence each other. However, it is crucial to point
 out that they are not exactly the same signal just observed at different scales, but
-LFP carries information not present in the spiking activity and vice-versa.\\
+LFP carries information not present in the spiking activity and vice-versa.\\ 
+
 A comparison between different areas of the brain can also be made. Consider, for instance,
 the Amygdala (Am) and the Hippocampus (HC). Both are in the frontal-medial part of the brain.
 In these regions a very nice correlated LFPs activity can be observed. When
 the signal moves outside the HC, it propagates reaching the temporal central region
-Cz on the top of the head (above HC). The correlation is not anymore as good as before.
+\textit{Cz} on the top of the head (above HC). The correlation is not anymore as good as before.
 \begin{figure}[H]
     \includegraphics[scale=0.42]{9_1}
     \centering
@@ -91,7 +96,7 @@ field is a superimposition of:
 In general, it can be stated that the surrounding activity of neurons highly affects
 the LFP by influencing the transmembrane potential of cells.
 \begin{figure}[H]
-    \includegraphics[scale=0.42]{9_2}
+    \includegraphics[scale=0.8]{9_2}
     \centering
 \end{figure}
 \subsubsection{Neural Architecture and Geometry}
@@ -121,7 +126,9 @@ superimposition of a large number of activated neurons will increase the LFP sig
 this phenomenon is known as \textbf{synchronization}. The so-called \textit{Beta rhythm},
 for instance, is a peculiar type of synchronization that lies between \(13\) and
 \(30\,Hz\). It mostly occurs in reaching and motion tasks, but this synchronization
-is suppressed as soon as the reaching movement is completed. Another important feature
+is suppressed as soon as the reaching movement is completed. \\ 
+
+Another important feature
 of temporal scaling is the \(\frac{1}{f^{\alpha}}\) frequency decay: the amplitude of
 the signal exhibits a power-law decay towards high frequencies and this may be
 partially explained by the low-pass filtering performed by dendrites and the
@@ -139,18 +146,20 @@ analyzing a neural signal, it is believed that coherent activity reflects functi
 relevant processing; however, volume conductivity represents a significant issue, as
 it tends to amplify this, leading to an overestimation of the coherent activity
 in brain.\\
+
 More in detail, the \textit{forward problem} indicates the modelling of the system
 responsible for the generation of a given recorded signal. It is opposed to the
 \textit{inverse problem}, consisting in sources localization. A possible approach
-to the \textit{forward problem} is by exploiting compartmental models, then
+to the \textit{forward problem} is by exploiting \textbf{compartmental models} of the neurons (soma, dendrites, axon..), then
 properly tuning the model parameters. Although this approach looks promising,
 it is computationally costly. On the other hand, single-compartment models
 are too simplistic to properly describe the structure of a neuron.\\
+
 When trying to address the \textit{forward problem} it is important to recall
 that the synaptic connectivity highly affects the LFP. On one side, it
 determines the spike train statistics (the so-called temporal coding), creating
-correlation patterns for the synaptic inputs and, on the other side, the spatial
-distribution of synapses highly affects how inputs are translated into LFP.
+correlation patterns for the synaptic inputs and, on the other side, \textbf{the spatial
+distribution} of synapses highly affects how inputs are translated into LFP.
 To sum up, it is not just a single neuron geometry that determines the LFP
 dynamics, but also the network spatial distribution: at the micro and meso
 scales the structure of the network plays a crucial role in determining
@@ -159,7 +168,7 @@ the function.
 \subsection{Functional Decomposition}
 The Local Field Potential, as well as other signals such as EEG and MEG ones,
 is usually decomposed into several frequency bands thanks to filtering.
-These bands are often called Berger Bands. They are far from being accurate
+These bands are often called \textbf{Berger Bands}. They are far from being accurate
 between different subjects and even within the same subject in
 different time instants. \\
 Usually, three main groups are determined by looking at the correlation between
@@ -173,7 +182,7 @@ two signals as a function of their frequency:
           from \(100\,Hz\) to \(150\,Hz\)
 \end{itemize}
 \begin{figure}[H]
-    \includegraphics[scale=0.25]{9_4}
+    \includegraphics[scale=0.5]{9_4}
     \centering
 \end{figure}
 
@@ -185,6 +194,7 @@ require deep ones. They are pretty much important because they are the direct
 correlate of the multi-unit activity coming from an extracellular electrode. Hence,
 they are basically the only way to record some byproducts of the real spiking activity
 in humans.\\
+
 Therefore, it is possible to look at the spiking activity of specific brain regions by
 filtering the recorded signals in the frequency range above \(100-120\,Hz\): the LFPs
 provide an indirect measure of the spike activity of the neuron ensemble.
